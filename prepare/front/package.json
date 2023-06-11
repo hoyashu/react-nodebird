@@ -11,11 +11,14 @@
   "author": "Hoyashu",
   "license": "ISC",
   "dependencies": {
+    "@ant-design/icons": "^5.1.4",
+    "antd": "^5.6.1",
     "next": "^10.2.3",
     "prettier": "^2.8.8",
     "prop-types": "^15.8.1",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
     "eslint": "^8.42.0",
