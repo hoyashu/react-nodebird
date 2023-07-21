@@ -1,6 +1,7 @@
 import { Button, Checkbox, Form, Input } from 'antd';
 import Head from 'next/head';
-import { useCallback } from 'react';
+import { useRouter } from 'next/router';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import AppLayout from '../components/AppLayout';
@@ -40,8 +41,16 @@ const tailFormItemLayout = {
 };
 
 const Signup = () => {
-  const dispatch = useDispatch();
+  const me = useSelector(state => state.user.me);
+  const router = useRouter();
+  useEffect(() => {
+    if (me && me.userEmail) {
+      router.push('/');
+    }
+  }, [me && me.userEmail]);
+
   const signUpLoading = useSelector(state => state.user.signUpLoading);
+  const dispatch = useDispatch();
   const onFinish = useCallback(values => {
     dispatch(signUpRequestAction(values));
   }, []);

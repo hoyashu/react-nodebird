@@ -2,7 +2,7 @@ import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/ico
 import { Col, Input, Layout, Menu, Row } from 'antd';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -26,39 +26,46 @@ const SearchColStyled = styled(Col)`
   align-items: center;
 `;
 
-const items = [
-  {
-    label: (
-      <Link href="/">
-        <a>노드버드</a>
-      </Link>
-    ),
-    key: 'home',
-    icon: <MailOutlined />,
-  },
-  {
-    label: (
-      <Link href="/profile">
-        <a>프로필</a>
-      </Link>
-    ),
-    key: 'profile',
-    icon: <AppstoreOutlined />,
-  },
-  {
-    label: (
-      <Link href="/signup">
-        <a>회원가입</a>
-      </Link>
-    ),
-    key: 'signup',
-    icon: <SettingOutlined />,
-  },
-];
-
 const AppLayout = ({ children }) => {
+  console.log('AppLayout');
   const me = useSelector(state => state.user.me);
-  // const [logInDone, setlogInDone] = useState(false);
+
+  const makeMenuItem = useCallback(() => {
+    const items = [
+      {
+        label: (
+          <Link href="/">
+            <a>노드버드</a>
+          </Link>
+        ),
+        key: 'home',
+        icon: <MailOutlined />,
+      },
+    ];
+
+    if (me) {
+      items.push({
+        label: (
+          <Link href="/profile">
+            <a>프로필</a>
+          </Link>
+        ),
+        key: 'profile',
+        icon: <AppstoreOutlined />,
+      });
+    } else {
+      items.push({
+        label: (
+          <Link href="/signup">
+            <a>회원가입</a>
+          </Link>
+        ),
+        key: 'signup',
+        icon: <SettingOutlined />,
+      });
+    }
+    return items;
+  }, [me]);
 
   const flexGrow = useMemo(() => ({ flexGrow: 1 }), []);
 
@@ -67,7 +74,7 @@ const AppLayout = ({ children }) => {
       <HeaderStyled>
         <Row gutter={8} style={flexGrow}>
           <Col xs={24} md={20}>
-            <Menu mode="horizontal" items={items} style={flexGrow} />
+            <Menu mode="horizontal" items={makeMenuItem()} style={flexGrow} />
           </Col>
           <SearchColStyled xs={24} md={4}>
             <Search placeholder="input search text" />

@@ -1,60 +1,46 @@
+import { faker } from '@faker-js/faker';
 import produce from 'immer';
+import shortId from 'shortId';
 
 export const initialState = {
   mainPosts: [
     {
       id: 2,
-
       User: {
         userEmail: '5126537@naver.com',
-
         nickName: '호야슈',
       },
-
       content: '슈화는 사랑입니다 #여자아이들 #슈화',
-
       Images: [
         {
           src: 'https://i.ytimg.com/vi/MMKU_TwY4wU/maxresdefault.jpg',
-
           alt: '슈화 귀여워',
         },
       ],
-
       Comments: [
         {
           postId: 2,
-
-          content: '댓글입니다~~',
-
+          content: faker.lorem.sentences(),
           User: {
-            userEmail: 'dd2@naver.com',
-
-            nickName: 'gg',
+            userEmail: faker.internet.email(),
+            nickName: faker.person.fullName(),
+          },
+        },
+        {
+          postId: 2,
+          content: faker.lorem.sentences(),
+          User: {
+            userEmail: faker.internet.email(),
+            nickName: faker.person.fullName(),
           },
         },
 
         {
           postId: 2,
-
-          content: '댓글입니다~~',
-
+          content: faker.lorem.sentences(),
           User: {
-            userEmail: 'dfd@naver.com',
-
-            nickName: 'ㅇㄹㄴㅇ',
-          },
-        },
-
-        {
-          postId: 2,
-
-          content: '댓글입니다~~',
-
-          User: {
-            userEmail: 'dfgd@naver.com',
-
-            nickName: 'gㄹㅇㄹㅇㄹg',
+            userEmail: faker.internet.email(),
+            nickName: faker.person.fullName(),
           },
         },
       ],
@@ -62,63 +48,46 @@ export const initialState = {
 
     {
       id: 1,
-
       User: {
-        userEmail: 'dd5@naver.com',
-
+        userEmail: faker.internet.email(),
         nickName: '제로초',
       },
-
       content: '첫번째 게시글 #해시태그 #익스프레스',
-
       Images: [
         {
           src: 'https://i.ytimg.com/vi/q6PcMa8zbWc/maxresdefault.jpg',
-
           alt: '슈화 귀여워',
         },
-
         {
           src: 'https://i.ytimg.com/vi/MMKU_TwY4wU/maxresdefault.jpg',
-
           alt: '슈화 귀여워',
         },
       ],
-
       Comments: [
         {
           postId: 3,
-
-          content: '댓글입니다~~',
-
+          content: faker.lorem.sentences(),
           User: {
-            userEmail: 'dd1@naver.com',
-
-            nickName: 'gg',
+            userEmail: faker.internet.email(),
+            nickName: faker.person.fullName(),
           },
         },
 
         {
           postId: 3,
-
-          content: '댓글입니다~~',
-
+          content: faker.lorem.sentences(),
           User: {
-            userEmail: 'ddd@naver.com',
-
-            nickName: 'ㅇㄹㄴㅇ',
+            userEmail: faker.internet.email(),
+            nickName: faker.person.fullName(),
           },
         },
 
         {
           postId: 3,
-
-          content: '댓글입니다~~',
-
+          content: faker.lorem.sentences(),
           User: {
-            userEmail: 'daa@naver.com',
-
-            nickName: 'gㄹㅇㄹㅇㄹg',
+            userEmail: faker.internet.email(),
+            nickName: faker.person.fullName(),
           },
         },
       ],
@@ -183,6 +152,26 @@ export const initialState = {
 
   changeCommentError: false,
 };
+
+initialState.mainPosts = initialState.mainPosts.concat(
+  Array(20)
+    .fill()
+    .map((v, i) => ({
+      id: shortId.generate(),
+      User: {
+        userEmail: faker.internet.email(),
+        nickName: faker.person.fullName(),
+      },
+      content: faker.lorem.paragraph(),
+      Images: [
+        {
+          src: faker.image.url(),
+          alt: faker.lorem.word(),
+        },
+      ],
+      Comments: [],
+    })),
+);
 
 export const ADD_POST_REQUEST = 'ADD_POST_REQUEST';
 

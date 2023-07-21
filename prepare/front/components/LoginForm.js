@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { Button, Form, Input } from 'antd';
 import Link from 'next/link';
 import { useCallback } from 'react';
@@ -38,24 +39,24 @@ const LoginForm = () => {
                 postId: 2,
                 content: '댓글입니다~~',
                 User: {
-                  userEmail: 'dd2@naver.com',
-                  nickName: 'gg',
+                  userEmail: faker.internet.email(),
+                  nickName: faker.person.fullName(),
                 },
               },
               {
                 postId: 2,
                 content: '댓글입니다~~',
                 User: {
-                  userEmail: 'dfd@naver.com',
-                  nickName: 'ㅇㄹㄴㅇ',
+                  userEmail: faker.internet.email(),
+                  nickName: faker.person.fullName(),
                 },
               },
               {
                 postId: 2,
                 content: '댓글입니다~~',
                 User: {
-                  userEmail: 'dfgd@naver.com',
-                  nickName: 'gㄹㅇㄹㅇㄹg',
+                  userEmail: faker.internet.email(),
+                  nickName: faker.person.fullName(),
                 },
               },
             ],
@@ -63,30 +64,30 @@ const LoginForm = () => {
         ],
         Followings: [
           {
-            userEmail: 'gg@naver.com',
-            nickName: 'gㄹㅇㄹㅇㄹg',
+            userEmail: faker.internet.email(),
+            nickName: faker.person.fullName(),
           },
           {
-            userEmail: 'a@naver.com',
-            nickName: '크크',
+            userEmail: faker.internet.email(),
+            nickName: faker.person.fullName(),
           },
           {
-            userEmail: 'dd3@naver.com',
-            nickName: '크방가크',
+            userEmail: faker.internet.email(),
+            nickName: faker.person.fullName(),
           },
         ],
         Followers: [
           {
-            userEmail: '5126ggg537@naver.com',
-            nickName: 'gㄹㅇㄹㅇㄹg',
+            userEmail: faker.internet.email(),
+            nickName: faker.person.fullName(),
           },
           {
-            userEmail: '51sdsd26537@naver.com',
-            nickName: '크크',
+            userEmail: faker.internet.email(),
+            nickName: faker.person.fullName(),
           },
           {
-            userEmail: '51265sdfs37@naver.com',
-            nickName: '크방가크',
+            userEmail: faker.internet.email(),
+            nickName: faker.person.fullName(),
           },
         ],
       }),

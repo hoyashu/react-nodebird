@@ -42,7 +42,7 @@ const CommentForm = ({ post }) => {
   );
 
   return (
-    <Form name="commentForm" form={form} onFinish={onSubmit}>
+    <Form name={`commentForm-${post.id}`} form={form} onFinish={onSubmit}>
       <Form.Item name="comment">
         <Input.TextArea />
       </Form.Item>

@@ -6,7 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginOutRequestAction } from '../reducers/user';
 
 const UserProfile = () => {
-  const { logOutLoading, me } = useSelector(state => state.user);
+  console.log('UserProfile');
+  const me = useSelector(state => state.user?.me);
+  const logOutLoading = useSelector(state => state.user?.logOutLoading);
 
   const dispatch = useDispatch();
   const { Meta } = Card;
