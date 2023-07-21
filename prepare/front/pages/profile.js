@@ -8,13 +8,11 @@ import FollowList from '../components/FollowList';
 import NicknameEditForm from '../components/NicknameEditForm';
 
 const Profile = () => {
-  console.log('Profile');
   const me = useSelector(state => state.user.me);
   const router = useRouter();
 
   useEffect(() => {
     if (!(me && me.userEmail)) {
-      console.log('router.push');
       router.push('/');
     }
   }, [me && me.userEmail]);

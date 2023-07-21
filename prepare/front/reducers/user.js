@@ -2,57 +2,37 @@ import produce from 'immer';
 
 export const initialState = {
   me: null,
-
   signUpDate: {},
-
   loginData: {},
 
   // 회원가입
-
   signUpLoading: false,
-
   signUpDone: false,
-
   signUpError: false,
 
   // 로그인
-
   logInLoading: false,
-
   logInDone: false,
-
   logInError: false,
 
   // 로그아웃
-
   logOutLoading: false,
-
   logOutDone: false,
-
   logOutError: false,
 
   // 닉네임 변경
-
   changeNicknameLoading: false,
-
   changeNicknameDone: false,
-
   changeNicknameError: false,
 
   // 팔로우 신청
-
   addFollowLoading: false,
-
   addFollowDone: false,
-
   addFollowError: false,
 
   // 팔로우 취소
-
   removeFollowLoading: false,
-
   removeFollowDone: false,
-
   removeFollowError: false,
 };
 
